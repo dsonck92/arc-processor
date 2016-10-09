@@ -60,7 +60,7 @@ class ARCProcessor : public QThread
       NEXT     = 0b000,
       NEGATIVE = 0b001,
       ZERO     = 0b010,
-      OVERFLOW = 0b011,
+      OVRFLOW  = 0b011,
       CARRY    = 0b100,
       IREG13   = 0b101,
       ALWAYS   = 0b110,

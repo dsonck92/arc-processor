@@ -1,7 +1,7 @@
 #ifndef REGISTEREDITOR_H
 #define REGISTEREDITOR_H
 
-#include <QtGui/QWidget>
+#include <QWidget>
 
 #include "ui_registereditor.h"
 

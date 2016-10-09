@@ -1,7 +1,7 @@
 #ifndef ARC_SIMULATOR_H
 #define ARC_SIMULATOR_H
 
-#include <QtGui/QMainWindow>
+#include <QMainWindow>
 #include "ui_arc_simulator.h"
 
 #include "ARCScratchpad.h"

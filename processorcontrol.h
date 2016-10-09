@@ -1,7 +1,7 @@
 #ifndef PROCESSORCONTROL_H
 #define PROCESSORCONTROL_H
 
-#include <QtGui/QWidget>
+#include <QWidget>
 #include "ui_processorcontrol.h"
 
 #include "ARCProcessor.h"

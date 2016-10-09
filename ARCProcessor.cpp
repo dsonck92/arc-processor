@@ -160,7 +160,7 @@ void ARCProcessor::doMicrostep ( )
       else
         m_amMicroStore->incMPC ( );
       break;
-    case OVERFLOW:
+    case OVRFLOW:
       qDebug ( ) << this << "On overflow";
       if ( psr & ( 1 << 21 ) )
         m_amMicroStore->setMPC ( addr );

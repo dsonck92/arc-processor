@@ -16,8 +16,8 @@
 ARCMemory::ARCMemory ( )
 {
     // TODO Auto-generated constructor stub
-    m_vu32Memory = new quint8 [0xFFFFFFFF];
-    qMemSet(m_vu32Memory,0,0xFFFFFFFF);
+    //m_vu32Memory = new quint8 [0xFFFFFFFF];
+    //qMemSet(m_vu32Memory,0,0xFFFFFFFF);
 }
 
 ARCMemory::~ARCMemory ( )
@@ -32,30 +32,30 @@ void ARCMemory::setAddress(quint32 loc)
 
 void ARCMemory::writeByte(quint8 data)
 {
-    qMemCopy(m_vu32Memory + m_addr,&data,sizeof(data));
+//    qMemCopy(m_vu32Memory + m_addr,&data,sizeof(data));
 
-    emit memoryChange(m_addr,m_addr+1);
+//    emit memoryChange(m_addr,m_addr+1);
 }
 
 void ARCMemory::writeWord(quint16 data)
 {
-    qMemCopy(m_vu32Memory + m_addr,&data,sizeof(data));
+//    qMemCopy(m_vu32Memory + m_addr,&data,sizeof(data));
 
-    emit memoryChange(m_addr,m_addr+2);
+//    emit memoryChange(m_addr,m_addr+2);
 
 }
 
 void ARCMemory::writeDWord(quint32 data)
 {
-    qMemCopy(m_vu32Memory + m_addr,&data,sizeof(data));
+//    qMemCopy(m_vu32Memory + m_addr,&data,sizeof(data));
 
-    emit memoryChange(m_addr,m_addr+4);
+//    emit memoryChange(m_addr,m_addr+4);
 }
 
 quint8 ARCMemory::readByte() const
 {
     quint8 data;
-    qMemCopy(&data,m_vu32Memory + m_addr,sizeof(data));
+//    qMemCopy(&data,m_vu32Memory + m_addr,sizeof(data));
 
     return data;
 }
@@ -63,7 +63,7 @@ quint8 ARCMemory::readByte() const
 quint16 ARCMemory::readWord() const
 {
     quint16 data;
-    qMemCopy(&data,m_vu32Memory + m_addr,sizeof(data));
+//    qMemCopy(&data,m_vu32Memory + m_addr,sizeof(data));
 
     return data;
 }
@@ -71,7 +71,7 @@ quint16 ARCMemory::readWord() const
 quint32 ARCMemory::readDWord() const
 {
     quint32 data;
-    qMemCopy(&data,m_vu32Memory + m_addr,sizeof(data));
+//    qMemCopy(&data,m_vu32Memory + m_addr,sizeof(data));
 
     return data;
 }
@@ -79,13 +79,14 @@ quint32 ARCMemory::readDWord() const
 quint32 ARCMemory::readDWord(quint32 loc) const
 {
     quint32 data;
-    qMemCopy(&data,m_vu32Memory + loc,sizeof(data));
+//    qMemCopy(&data,m_vu32Memory + loc,sizeof(data));
 
     return data;
 }
 
 bool ARCMemory::loadBinFile(QString filename)
 {
+    return false;
     QFile file(filename);
     file.open(QIODevice::ReadOnly);
     {
@@ -101,7 +102,7 @@ bool ARCMemory::loadBinFile(QString filename)
 
             qDebug() << addr << inst;
 
-            qMemCopy(m_vu32Memory + addr,&inst,sizeof(inst));
+            //qMemCopy(m_vu32Memory + addr,&inst,sizeof(inst));
 
             emit memoryChange(addr,addr+4);
         }
@@ -112,6 +113,7 @@ bool ARCMemory::loadBinFile(QString filename)
 
 void ARCMemory::saveBinFile(QString filename)
 {
+    return;
     QFile file(filename);
     file.open(QIODevice::WriteOnly);
     {
@@ -120,7 +122,7 @@ void ARCMemory::saveBinFile(QString filename)
         for(int I=0;I<0xFFFFFFFF;I+=4)
         {
             quint32 inst;
-            qMemCopy(&inst,m_vu32Memory + I,sizeof(inst));
+            //qMemCopy(&inst,m_vu32Memory + I,sizeof(inst));
 
             if(inst != 0)
             {

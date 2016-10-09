@@ -1,7 +1,7 @@
 #ifndef MEMORYEDITOR_H
 #define MEMORYEDITOR_H
 
-#include <QtGui/QWidget>
+#include <QWidget>
 #include <QLabel>
 #include <QLineEdit>
 #include <QCheckBox>

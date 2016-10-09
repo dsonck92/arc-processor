@@ -1,7 +1,7 @@
 #ifndef PROGRAMEDITOR_H
 #define PROGRAMEDITOR_H
 
-#include <QtGui/QWidget>
+#include <QWidget>
 #include "ui_programeditor.h"
 
 class ProgramEditor : public QWidget

@@ -1,7 +1,8 @@
 TEMPLATE = app
 TARGET = arc_simulator
 QT += core \
-    gui
+    gui \
+    widgets
 HEADERS += microfileeditor.h \
     ARCMicroStore.h \
     ARCScratchpad.h \

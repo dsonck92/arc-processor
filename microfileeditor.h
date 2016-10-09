@@ -1,7 +1,7 @@
 #ifndef MICROFILEEDITOR_H
 #define MICROFILEEDITOR_H
 
-#include <QtGui/QWidget>
+#include <QWidget>
 #include "ui_microfileeditor.h"
 
 #include <qlabel.h>
