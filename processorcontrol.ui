@@ -1,0 +1,563 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>ProcessorControlClass</class>
+ <widget class="QWidget" name="ProcessorControlClass">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>584</width>
+    <height>100</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>ProcessorControl</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout_2">
+   <property name="margin">
+    <number>0</number>
+   </property>
+   <property name="spacing">
+    <number>0</number>
+   </property>
+   <item row="1" column="0">
+    <widget class="QFrame" name="m_fControls">
+     <property name="frameShape">
+      <enum>QFrame::Panel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <property name="spacing">
+       <number>0</number>
+      </property>
+      <property name="margin">
+       <number>1</number>
+      </property>
+      <item>
+       <widget class="QToolButton" name="m_tbStart">
+        <property name="toolTip">
+         <string>Go to address 0x00000000</string>
+        </property>
+        <property name="text">
+         <string>|&lt;&lt;</string>
+        </property>
+        <property name="icon">
+         <iconset resource="resource.qrc">
+          <normaloff>:/images/begin.png</normaloff>:/images/begin.png</iconset>
+        </property>
+        <property name="autoRaise">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QToolButton" name="m_tbOrg">
+        <property name="toolTip">
+         <string>Go to the beginning of the program</string>
+        </property>
+        <property name="text">
+         <string>800</string>
+        </property>
+        <property name="icon">
+         <iconset resource="resource.qrc">
+          <normaloff>:/images/orig.png</normaloff>:/images/orig.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>32</width>
+          <height>16</height>
+         </size>
+        </property>
+        <property name="autoRaise">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QToolButton" name="m_tbStop">
+        <property name="toolTip">
+         <string>Start/Stop the processor thread</string>
+        </property>
+        <property name="text">
+         <string>[]</string>
+        </property>
+        <property name="icon">
+         <iconset resource="resource.qrc">
+          <normaloff>:/images/stop.png</normaloff>:/images/stop.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>16</width>
+          <height>16</height>
+         </size>
+        </property>
+        <property name="checkable">
+         <bool>true</bool>
+        </property>
+        <property name="autoRaise">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QToolButton" name="m_tbPause">
+        <property name="toolTip">
+         <string>Pause the processor</string>
+        </property>
+        <property name="text">
+         <string>||</string>
+        </property>
+        <property name="icon">
+         <iconset resource="resource.qrc">
+          <normaloff>:/images/pause.png</normaloff>:/images/pause.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>16</width>
+          <height>16</height>
+         </size>
+        </property>
+        <property name="checkable">
+         <bool>true</bool>
+        </property>
+        <property name="autoRaise">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QSpinBox" name="m_sbMaxSteps">
+        <property name="toolTip">
+         <string>Maximum number of steps</string>
+        </property>
+        <property name="frame">
+         <bool>true</bool>
+        </property>
+        <property name="suffix">
+         <string/>
+        </property>
+        <property name="minimum">
+         <number>-1</number>
+        </property>
+        <property name="maximum">
+         <number>2147483647</number>
+        </property>
+        <property name="value">
+         <number>-1</number>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QToolButton" name="m_tbRun">
+        <property name="toolTip">
+         <string>Run the processor in a seperate thread</string>
+        </property>
+        <property name="text">
+         <string>&gt;</string>
+        </property>
+        <property name="icon">
+         <iconset resource="resource.qrc">
+          <normaloff>:/images/run.png</normaloff>:/images/run.png</iconset>
+        </property>
+        <property name="checkable">
+         <bool>true</bool>
+        </property>
+        <property name="autoRaise">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QToolButton" name="m_tbEnd">
+        <property name="toolTip">
+         <string>Go to address 0xFFFFFFFF</string>
+        </property>
+        <property name="text">
+         <string>&gt;&gt;|</string>
+        </property>
+        <property name="icon">
+         <iconset resource="resource.qrc">
+          <normaloff>:/images/end.png</normaloff>:/images/end.png</iconset>
+        </property>
+        <property name="autoRaise">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="1" column="1">
+    <widget class="QFrame" name="m_fMC">
+     <property name="frameShape">
+      <enum>QFrame::Panel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout_3">
+      <property name="spacing">
+       <number>0</number>
+      </property>
+      <property name="margin">
+       <number>1</number>
+      </property>
+      <item>
+       <widget class="QLabel" name="m_lMC">
+        <property name="text">
+         <string>&amp;MC</string>
+        </property>
+        <property name="buddy">
+         <cstring>m_leMC</cstring>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QToolButton" name="m_tbBackMC">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="text">
+         <string>||&lt;</string>
+        </property>
+        <property name="icon">
+         <iconset resource="resource.qrc">
+          <normaloff>:/images/micro-step-backward.png</normaloff>:/images/micro-step-backward.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>16</width>
+          <height>8</height>
+         </size>
+        </property>
+        <property name="autoRaise">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QCheckBox" name="m_chbAutoBackMC">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="m_leMC">
+        <property name="frame">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QCheckBox" name="m_chbAutoForwardMC">
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QToolButton" name="m_tbForwardMC">
+        <property name="text">
+         <string>&gt;||</string>
+        </property>
+        <property name="icon">
+         <iconset resource="resource.qrc">
+          <normaloff>:/images/micro-step-forward.png</normaloff>:/images/micro-step-forward.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>16</width>
+          <height>8</height>
+         </size>
+        </property>
+        <property name="autoRaise">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="1" column="5">
+    <widget class="QFrame" name="frame">
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+     <layout class="QGridLayout" name="gridLayout">
+      <property name="margin">
+       <number>0</number>
+      </property>
+      <property name="spacing">
+       <number>0</number>
+      </property>
+     </layout>
+    </widget>
+   </item>
+   <item row="1" column="2">
+    <widget class="QFrame" name="m_fPC">
+     <property name="frameShape">
+      <enum>QFrame::Panel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout_2">
+      <property name="spacing">
+       <number>0</number>
+      </property>
+      <property name="margin">
+       <number>1</number>
+      </property>
+      <item>
+       <widget class="QLabel" name="m_lPC">
+        <property name="text">
+         <string>&amp;PC</string>
+        </property>
+        <property name="buddy">
+         <cstring>m_lePC</cstring>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QToolButton" name="m_tbBackPC">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="text">
+         <string>||&lt;</string>
+        </property>
+        <property name="icon">
+         <iconset resource="resource.qrc">
+          <normaloff>:/images/step-backward.png</normaloff>:/images/step-backward.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>16</width>
+          <height>8</height>
+         </size>
+        </property>
+        <property name="autoRaise">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QCheckBox" name="m_chbAutoBackPC">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="m_lePC">
+        <property name="frame">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QCheckBox" name="m_chbAutoForwardPC">
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QToolButton" name="m_tbForwardPC">
+        <property name="text">
+         <string>&gt;||</string>
+        </property>
+        <property name="icon">
+         <iconset resource="resource.qrc">
+          <normaloff>:/images/step-forward.png</normaloff>:/images/step-forward.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>16</width>
+          <height>8</height>
+         </size>
+        </property>
+        <property name="autoRaise">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="0" column="0" colspan="3">
+    <widget class="QSlider" name="horizontalSlider">
+     <property name="maximum">
+      <number>2000</number>
+     </property>
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="invertedAppearance">
+      <bool>true</bool>
+     </property>
+     <property name="invertedControls">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <tabstops>
+  <tabstop>m_tbBackPC</tabstop>
+  <tabstop>m_chbAutoBackPC</tabstop>
+  <tabstop>m_lePC</tabstop>
+  <tabstop>m_chbAutoForwardPC</tabstop>
+  <tabstop>m_tbForwardPC</tabstop>
+  <tabstop>m_tbBackMC</tabstop>
+  <tabstop>m_chbAutoBackMC</tabstop>
+  <tabstop>m_leMC</tabstop>
+  <tabstop>m_chbAutoForwardMC</tabstop>
+  <tabstop>m_tbForwardMC</tabstop>
+  <tabstop>m_tbStart</tabstop>
+  <tabstop>m_tbOrg</tabstop>
+  <tabstop>m_tbPause</tabstop>
+  <tabstop>m_sbMaxSteps</tabstop>
+  <tabstop>m_tbRun</tabstop>
+  <tabstop>m_tbEnd</tabstop>
+ </tabstops>
+ <resources>
+  <include location="resource.qrc"/>
+ </resources>
+ <connections>
+  <connection>
+   <sender>m_chbAutoForwardPC</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>ProcessorControlClass</receiver>
+   <slot>setAutoForwardPC(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>541</x>
+     <y>27</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>547</x>
+     <y>99</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_chbAutoForwardMC</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>ProcessorControlClass</receiver>
+   <slot>setAutoForwardMC(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>549</x>
+     <y>68</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>559</x>
+     <y>99</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_tbRun</sender>
+   <signal>clicked()</signal>
+   <receiver>ProcessorControlClass</receiver>
+   <slot>startProcessor()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>549</x>
+     <y>97</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>526</x>
+     <y>99</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_tbPause</sender>
+   <signal>clicked()</signal>
+   <receiver>ProcessorControlClass</receiver>
+   <slot>stopProcessor()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>145</x>
+     <y>97</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>110</x>
+     <y>99</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>horizontalSlider</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>ProcessorControlClass</receiver>
+   <slot>setAutoSpeed(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>72</x>
+     <y>9</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>81</x>
+     <y>99</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_tbEnd</sender>
+   <signal>clicked()</signal>
+   <receiver>ProcessorControlClass</receiver>
+   <slot>goToEnd()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>566</x>
+     <y>82</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>590</x>
+     <y>69</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_tbStart</sender>
+   <signal>clicked()</signal>
+   <receiver>ProcessorControlClass</receiver>
+   <slot>goToBegin()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>17</x>
+     <y>79</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-4</x>
+     <y>70</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>setAutoForwardPC(bool)</slot>
+  <slot>setAutoForwardMC(bool)</slot>
+  <slot>startProcessor()</slot>
+  <slot>stopProcessor()</slot>
+  <slot>setAutoSpeed(int)</slot>
+  <slot>goToBegin()</slot>
+  <slot>goToEnd()</slot>
+ </slots>
+</ui>

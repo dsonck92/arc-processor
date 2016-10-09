@@ -1,0 +1,479 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MicrofileEditorClass</class>
+ <widget class="QWidget" name="MicrofileEditorClass">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>400</width>
+    <height>383</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MicrofileEditor</string>
+  </property>
+  <layout class="QHBoxLayout" name="horizontalLayout">
+   <item>
+    <widget class="QFrame" name="m_fEditor">
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QFrame" name="m_fProg">
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+     <layout class="QGridLayout" name="gridLayout">
+      <property name="margin">
+       <number>0</number>
+      </property>
+      <item row="11" column="0">
+       <widget class="QToolButton" name="m_tbLoad">
+        <property name="text">
+         <string>...</string>
+        </property>
+        <property name="icon">
+         <iconset resource="resource.qrc">
+          <normaloff>:/images/open.png</normaloff>:/images/open.png</iconset>
+        </property>
+        <property name="autoRaise">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="12" column="0">
+       <widget class="QToolButton" name="m_tbSave">
+        <property name="text">
+         <string>...</string>
+        </property>
+        <property name="icon">
+         <iconset resource="resource.qrc">
+          <normaloff>:/images/save.png</normaloff>:/images/save.png</iconset>
+        </property>
+        <property name="autoRaise">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="13" column="0">
+       <spacer name="verticalSpacer_3">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>20</width>
+          <height>40</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item row="10" column="0">
+       <widget class="QToolButton" name="m_tbEdit">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="text">
+         <string>...</string>
+        </property>
+        <property name="icon">
+         <iconset resource="resource.qrc">
+          <normaloff>:/images/edit.png</normaloff>:/images/edit.png</iconset>
+        </property>
+        <property name="checkable">
+         <bool>true</bool>
+        </property>
+        <property name="autoRaise">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="14" column="0">
+       <widget class="QToolButton" name="m_tbFollow">
+        <property name="text">
+         <string>...</string>
+        </property>
+        <property name="icon">
+         <iconset resource="resource.qrc">
+          <normaloff>:/images/follow.png</normaloff>:/images/follow.png</iconset>
+        </property>
+        <property name="checkable">
+         <bool>true</bool>
+        </property>
+        <property name="autoRaise">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="15" column="0">
+       <spacer name="verticalSpacer_2">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>20</width>
+          <height>40</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item row="9" column="0">
+       <spacer name="verticalSpacer">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>20</width>
+          <height>40</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item row="8" column="0">
+       <widget class="QToolButton" name="m_tbProgD1">
+        <property name="text">
+         <string>...</string>
+        </property>
+        <property name="icon">
+         <iconset resource="resource.qrc">
+          <normaloff>:/images/up.png</normaloff>:/images/up.png</iconset>
+        </property>
+        <property name="autoRepeat">
+         <bool>true</bool>
+        </property>
+        <property name="autoRepeatDelay">
+         <number>1000</number>
+        </property>
+        <property name="autoRaise">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="0">
+       <widget class="QToolButton" name="m_tbProgD2">
+        <property name="text">
+         <string>...</string>
+        </property>
+        <property name="icon">
+         <iconset resource="resource.qrc">
+          <normaloff>:/images/up2.png</normaloff>:/images/up2.png</iconset>
+        </property>
+        <property name="autoRepeat">
+         <bool>true</bool>
+        </property>
+        <property name="autoRepeatDelay">
+         <number>1000</number>
+        </property>
+        <property name="autoRaise">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="0">
+       <widget class="QToolButton" name="m_tbProgD4">
+        <property name="text">
+         <string>...</string>
+        </property>
+        <property name="icon">
+         <iconset resource="resource.qrc">
+          <normaloff>:/images/up4.png</normaloff>:/images/up4.png</iconset>
+        </property>
+        <property name="autoRepeat">
+         <bool>true</bool>
+        </property>
+        <property name="autoRepeatDelay">
+         <number>1000</number>
+        </property>
+        <property name="autoRaise">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="16" column="0">
+       <widget class="QToolButton" name="m_tbProgU1">
+        <property name="text">
+         <string>...</string>
+        </property>
+        <property name="icon">
+         <iconset resource="resource.qrc">
+          <normaloff>:/images/down.png</normaloff>:/images/down.png</iconset>
+        </property>
+        <property name="autoRepeat">
+         <bool>true</bool>
+        </property>
+        <property name="autoRepeatDelay">
+         <number>1000</number>
+        </property>
+        <property name="autoRaise">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="17" column="0">
+       <widget class="QToolButton" name="m_tbProgU2">
+        <property name="text">
+         <string>...</string>
+        </property>
+        <property name="icon">
+         <iconset resource="resource.qrc">
+          <normaloff>:/images/down2.png</normaloff>:/images/down2.png</iconset>
+        </property>
+        <property name="autoRepeat">
+         <bool>true</bool>
+        </property>
+        <property name="autoRepeatDelay">
+         <number>1000</number>
+        </property>
+        <property name="autoRaise">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="1" rowspan="13">
+       <widget class="QScrollBar" name="m_sbOffset">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Expanding">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="maximum">
+         <number>2047</number>
+        </property>
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+       </widget>
+      </item>
+      <item row="18" column="0">
+       <widget class="QToolButton" name="m_tbProgU4">
+        <property name="text">
+         <string>...</string>
+        </property>
+        <property name="icon">
+         <iconset resource="resource.qrc">
+          <normaloff>:/images/down4.png</normaloff>:/images/down4.png</iconset>
+        </property>
+        <property name="autoRepeat">
+         <bool>true</bool>
+        </property>
+        <property name="autoRepeatDelay">
+         <number>1000</number>
+        </property>
+        <property name="autoRaise">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources>
+  <include location="resource.qrc"/>
+ </resources>
+ <connections>
+  <connection>
+   <sender>m_tbEdit</sender>
+   <signal>clicked()</signal>
+   <receiver>MicrofileEditorClass</receiver>
+   <slot>editToggle()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>279</x>
+     <y>144</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>227</x>
+     <y>323</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_tbProgD4</sender>
+   <signal>clicked()</signal>
+   <receiver>MicrofileEditorClass</receiver>
+   <slot>decProg4()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>279</x>
+     <y>29</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>565</x>
+     <y>61</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_tbProgD2</sender>
+   <signal>clicked()</signal>
+   <receiver>MicrofileEditorClass</receiver>
+   <slot>decProg2()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>279</x>
+     <y>60</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>508</x>
+     <y>69</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_tbProgD1</sender>
+   <signal>clicked()</signal>
+   <receiver>MicrofileEditorClass</receiver>
+   <slot>decProg()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>279</x>
+     <y>91</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>466</x>
+     <y>91</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_tbProgU1</sender>
+   <signal>clicked()</signal>
+   <receiver>MicrofileEditorClass</receiver>
+   <slot>incProg()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>279</x>
+     <y>311</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>462</x>
+     <y>214</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_tbProgU2</sender>
+   <signal>clicked()</signal>
+   <receiver>MicrofileEditorClass</receiver>
+   <slot>incProg2()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>279</x>
+     <y>342</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>560</x>
+     <y>249</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_tbProgU4</sender>
+   <signal>clicked()</signal>
+   <receiver>MicrofileEditorClass</receiver>
+   <slot>incProg4()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>279</x>
+     <y>373</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>463</x>
+     <y>280</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_tbLoad</sender>
+   <signal>clicked()</signal>
+   <receiver>MicrofileEditorClass</receiver>
+   <slot>load()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>279</x>
+     <y>175</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>503</x>
+     <y>178</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_tbFollow</sender>
+   <signal>clicked()</signal>
+   <receiver>MicrofileEditorClass</receiver>
+   <slot>followToggle()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>279</x>
+     <y>258</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>547</x>
+     <y>187</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_sbOffset</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>MicrofileEditorClass</receiver>
+   <slot>setFrom(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>342</x>
+     <y>111</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>399</x>
+     <y>23</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_tbSave</sender>
+   <signal>clicked()</signal>
+   <receiver>MicrofileEditorClass</receiver>
+   <slot>save()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>262</x>
+     <y>198</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>402</x>
+     <y>198</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>editToggle()</slot>
+  <slot>decProg4()</slot>
+  <slot>decProg2()</slot>
+  <slot>decProg()</slot>
+  <slot>incProg()</slot>
+  <slot>incProg2()</slot>
+  <slot>incProg4()</slot>
+  <slot>load()</slot>
+  <slot>save()</slot>
+  <slot>followToggle()</slot>
+  <slot>setFrom(int)</slot>
+ </slots>
+</ui>

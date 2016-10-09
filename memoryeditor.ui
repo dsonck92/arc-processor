@@ -1,0 +1,560 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MemoryEditorClass</class>
+ <widget class="QWidget" name="MemoryEditorClass">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>400</width>
+    <height>518</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MemoryEditor</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <property name="margin">
+    <number>0</number>
+   </property>
+   <property name="spacing">
+    <number>0</number>
+   </property>
+   <item row="0" column="0" colspan="3">
+    <widget class="QGroupBox" name="m_gbProgram">
+     <property name="title">
+      <string>Program</string>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <widget class="QFrame" name="m_fProgram">
+        <property name="frameShape">
+         <enum>QFrame::StyledPanel</enum>
+        </property>
+        <property name="frameShadow">
+         <enum>QFrame::Raised</enum>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QFrame" name="m_fProg">
+        <property name="frameShape">
+         <enum>QFrame::StyledPanel</enum>
+        </property>
+        <property name="frameShadow">
+         <enum>QFrame::Raised</enum>
+        </property>
+        <layout class="QVBoxLayout" name="verticalLayout">
+         <property name="spacing">
+          <number>0</number>
+         </property>
+         <property name="margin">
+          <number>0</number>
+         </property>
+         <item>
+          <widget class="QToolButton" name="m_tbProgD4">
+           <property name="text">
+            <string>...</string>
+           </property>
+           <property name="icon">
+            <iconset resource="resource.qrc">
+             <normaloff>:/images/up4.png</normaloff>:/images/up4.png</iconset>
+           </property>
+           <property name="autoRaise">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QToolButton" name="m_tbProgD2">
+           <property name="text">
+            <string>...</string>
+           </property>
+           <property name="icon">
+            <iconset resource="resource.qrc">
+             <normaloff>:/images/up2.png</normaloff>:/images/up2.png</iconset>
+           </property>
+           <property name="autoRaise">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QToolButton" name="m_tbProgD1">
+           <property name="text">
+            <string>...</string>
+           </property>
+           <property name="icon">
+            <iconset resource="resource.qrc">
+             <normaloff>:/images/up.png</normaloff>:/images/up.png</iconset>
+           </property>
+           <property name="autoRaise">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="verticalSpacer_3">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>40</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QToolButton" name="toolButton">
+           <property name="text">
+            <string>...</string>
+           </property>
+           <property name="icon">
+            <iconset resource="resource.qrc">
+             <normaloff>:/images/follow.png</normaloff>:/images/follow.png</iconset>
+           </property>
+           <property name="autoRaise">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="verticalSpacer">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>40</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QToolButton" name="m_tbProgU1">
+           <property name="text">
+            <string>...</string>
+           </property>
+           <property name="icon">
+            <iconset resource="resource.qrc">
+             <normaloff>:/images/down.png</normaloff>:/images/down.png</iconset>
+           </property>
+           <property name="autoRaise">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QToolButton" name="m_tbProgU2">
+           <property name="text">
+            <string>...</string>
+           </property>
+           <property name="icon">
+            <iconset resource="resource.qrc">
+             <normaloff>:/images/down2.png</normaloff>:/images/down2.png</iconset>
+           </property>
+           <property name="autoRaise">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QToolButton" name="m_tbProgU4">
+           <property name="text">
+            <string>...</string>
+           </property>
+           <property name="icon">
+            <iconset resource="resource.qrc">
+             <normaloff>:/images/down4.png</normaloff>:/images/down4.png</iconset>
+           </property>
+           <property name="autoRaise">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="1" column="0" colspan="3">
+    <widget class="QGroupBox" name="m_gbMemory">
+     <property name="title">
+      <string>Memory</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_3">
+      <item row="0" column="1">
+       <widget class="QFrame" name="m_fMem">
+        <property name="frameShape">
+         <enum>QFrame::StyledPanel</enum>
+        </property>
+        <property name="frameShadow">
+         <enum>QFrame::Raised</enum>
+        </property>
+        <layout class="QVBoxLayout" name="verticalLayout_2">
+         <property name="spacing">
+          <number>0</number>
+         </property>
+         <property name="margin">
+          <number>0</number>
+         </property>
+         <item>
+          <widget class="QToolButton" name="m_tbMemD4">
+           <property name="text">
+            <string>...</string>
+           </property>
+           <property name="icon">
+            <iconset resource="resource.qrc">
+             <normaloff>:/images/up4.png</normaloff>:/images/up4.png</iconset>
+           </property>
+           <property name="autoRaise">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QToolButton" name="m_tbMemD2">
+           <property name="text">
+            <string>...</string>
+           </property>
+           <property name="icon">
+            <iconset resource="resource.qrc">
+             <normaloff>:/images/up2.png</normaloff>:/images/up2.png</iconset>
+           </property>
+           <property name="autoRaise">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QToolButton" name="m_tbMemD1">
+           <property name="text">
+            <string>...</string>
+           </property>
+           <property name="icon">
+            <iconset resource="resource.qrc">
+             <normaloff>:/images/up.png</normaloff>:/images/up.png</iconset>
+           </property>
+           <property name="autoRaise">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="verticalSpacer_2">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>40</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QToolButton" name="m_tbOpen">
+           <property name="text">
+            <string>...</string>
+           </property>
+           <property name="icon">
+            <iconset resource="resource.qrc">
+             <normaloff>:/images/open.png</normaloff>:/images/open.png</iconset>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QToolButton" name="m_tbSave">
+           <property name="text">
+            <string>...</string>
+           </property>
+           <property name="icon">
+            <iconset resource="resource.qrc">
+             <normaloff>:/images/save.png</normaloff>:/images/save.png</iconset>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="verticalSpacer_4">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>40</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QToolButton" name="m_tbMemU1">
+           <property name="text">
+            <string>...</string>
+           </property>
+           <property name="icon">
+            <iconset resource="resource.qrc">
+             <normaloff>:/images/down.png</normaloff>:/images/down.png</iconset>
+           </property>
+           <property name="autoRaise">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QToolButton" name="m_tbMemU2">
+           <property name="text">
+            <string>...</string>
+           </property>
+           <property name="icon">
+            <iconset resource="resource.qrc">
+             <normaloff>:/images/down2.png</normaloff>:/images/down2.png</iconset>
+           </property>
+           <property name="autoRaise">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QToolButton" name="m_tbMemU4">
+           <property name="text">
+            <string>...</string>
+           </property>
+           <property name="icon">
+            <iconset resource="resource.qrc">
+             <normaloff>:/images/down4.png</normaloff>:/images/down4.png</iconset>
+           </property>
+           <property name="autoRaise">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QFrame" name="m_fMemory">
+        <property name="frameShape">
+         <enum>QFrame::StyledPanel</enum>
+        </property>
+        <property name="frameShadow">
+         <enum>QFrame::Raised</enum>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="2" column="0" colspan="3">
+    <widget class="QFrame" name="m_fMode">
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout_2">
+      <property name="spacing">
+       <number>0</number>
+      </property>
+      <property name="margin">
+       <number>0</number>
+      </property>
+      <item>
+       <widget class="QRadioButton" name="m_rbHex">
+        <property name="text">
+         <string>HEX</string>
+        </property>
+        <attribute name="buttonGroup">
+         <string notr="true">m_bgMode</string>
+        </attribute>
+       </widget>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="m_rbDec">
+        <property name="text">
+         <string>DEC</string>
+        </property>
+        <attribute name="buttonGroup">
+         <string notr="true">m_bgMode</string>
+        </attribute>
+       </widget>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="m_rbOct">
+        <property name="text">
+         <string>OCT</string>
+        </property>
+        <attribute name="buttonGroup">
+         <string notr="true">m_bgMode</string>
+        </attribute>
+       </widget>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="m_rbBin">
+        <property name="text">
+         <string>BIN</string>
+        </property>
+        <attribute name="buttonGroup">
+         <string notr="true">m_bgMode</string>
+        </attribute>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources>
+  <include location="resource.qrc"/>
+ </resources>
+ <connections>
+  <connection>
+   <sender>m_tbProgD2</sender>
+   <signal>clicked()</signal>
+   <receiver>MemoryEditorClass</receiver>
+   <slot>decProg2()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>233</x>
+     <y>74</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>399</x>
+     <y>76</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_tbProgD4</sender>
+   <signal>clicked()</signal>
+   <receiver>MemoryEditorClass</receiver>
+   <slot>decProg4()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>233</x>
+     <y>49</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>399</x>
+     <y>34</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_tbProgU2</sender>
+   <signal>clicked()</signal>
+   <receiver>MemoryEditorClass</receiver>
+   <slot>incProg2()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>233</x>
+     <y>183</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>399</x>
+     <y>157</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_tbProgU4</sender>
+   <signal>clicked()</signal>
+   <receiver>MemoryEditorClass</receiver>
+   <slot>incProg4()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>233</x>
+     <y>208</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>399</x>
+     <y>184</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_tbProgD1</sender>
+   <signal>clicked()</signal>
+   <receiver>MemoryEditorClass</receiver>
+   <slot>decProg()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>226</x>
+     <y>88</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>399</x>
+     <y>104</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_tbProgU1</sender>
+   <signal>clicked()</signal>
+   <receiver>MemoryEditorClass</receiver>
+   <slot>incProg()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>235</x>
+     <y>174</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>399</x>
+     <y>157</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_tbSave</sender>
+   <signal>clicked()</signal>
+   <receiver>MemoryEditorClass</receiver>
+   <slot>saveBin()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>221</x>
+     <y>391</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>400</x>
+     <y>432</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_tbOpen</sender>
+   <signal>clicked()</signal>
+   <receiver>MemoryEditorClass</receiver>
+   <slot>loadBin()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>222</x>
+     <y>361</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>401</x>
+     <y>411</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>incProg2()</slot>
+  <slot>incProg4()</slot>
+  <slot>decProg2()</slot>
+  <slot>decProg4()</slot>
+  <slot>decProg()</slot>
+  <slot>incProg()</slot>
+  <slot>loadBin()</slot>
+  <slot>saveBin()</slot>
+ </slots>
+ <buttongroups>
+  <buttongroup name="m_bgMode"/>
+ </buttongroups>
+</ui>
