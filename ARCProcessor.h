@@ -67,7 +67,7 @@ class ARCProcessor : public QThread
       DECODE   = 0b111,
     };
 
-    quint8 doALU( ALU alu );
+    quint32 doALU( ALU alu );
 
     void run();
 

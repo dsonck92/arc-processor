@@ -4,6 +4,7 @@
 #include "registereditor.h"
 #include "memoryeditor.h"
 #include "microfileeditor.h"
+#include "PagedMemory.h"
 
 #include <QDockWidget>
 
@@ -18,7 +19,7 @@ arc_simulator::arc_simulator(QWidget *parent)
     statusBar()->addPermanentWidget(m_lProcessorStatus = new QLabel());
 
     m_asScratchpad = new ARCScratchpad;
-    m_amMemory = new ARCMemory;
+    m_amMemory = new PagedMemory;
     m_amMicroStore = new ARCMicroStore;
     m_apProcessor  = new ARCProcessor(m_amMicroStore,m_asScratchpad,m_amMemory);
 

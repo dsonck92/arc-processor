@@ -127,7 +127,7 @@ void ProcessorControl::newMPC(quint16 pc)
 
 void ProcessorControl::goToBegin()
 {
-    m_apProcessor->scratchpad()->writeRegister(ARCScratchpad::PC,0x00000000);
+    m_apProcessor->scratchpad()->writeRegister(ARCScratchpad::PC,0x00000800);
 }
 
 void ProcessorControl::goToEnd()

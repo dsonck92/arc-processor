@@ -12,7 +12,8 @@ HEADERS += microfileeditor.h \
     registereditor.h \
     processorcontrol.h \
     programeditor.h \
-    arc_simulator.h
+    arc_simulator.h \
+    PagedMemory.h
 SOURCES += microfileeditor.cpp \
     ARCMicroStore.cpp \
     ARCScratchpad.cpp \
@@ -23,7 +24,8 @@ SOURCES += microfileeditor.cpp \
     processorcontrol.cpp \
     programeditor.cpp \
     main.cpp \
-    arc_simulator.cpp
+    arc_simulator.cpp \
+    PagedMemory.cpp
 FORMS += microfileeditor.ui \
     memoryeditor.ui \
     registereditor.ui \

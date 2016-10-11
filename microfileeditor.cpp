@@ -132,11 +132,11 @@ MicrofileEditor::MicrofileEditor ( ARCMicroStore *store , QWidget *parent )
 
     QFrame *fr = new QFrame();
     fr->setFrameShape(QFrame::HLine);
-    layout->addWidget(fr,9,0,1,11);
+    layout->addWidget(fr,9,0,1,12);
 
     fr = new QFrame();
     fr->setFrameShape(QFrame::HLine);
-    layout->addWidget(fr,11,0,1,11);
+    layout->addWidget(fr,11,0,1,12);
 
     connect(m_amMicrostore,SIGNAL(newMPC(quint16)),SLOT(newMPC(quint16)));
 }
@@ -168,8 +168,11 @@ void MicrofileEditor::updateInstruction(int i)
     m_updating = true;
     MPI in = m_amMicrostore->readAt((i+m_from)%2048);
 
-    m_instGui[i].m_lAddress->setText(QString("%1").arg((i+m_from)%2048));
+    if(!m_follow || i != 7 ) {
+        m_instGui[i].m_lAddress->setText(QString("%1").arg((i+m_from)%2048));
+    }
 
+    m_instGui[i].m_leJump->setText(QString("%1").arg(in & 0x07FF));
 
     m_instGui[i].m_cbRegA->setCurrentIndex(int(( in & 0x01F800000000 ) >> 35));
     m_instGui[i].m_chbMuxA->setChecked((in & 0x000400000000) > 0);
@@ -187,7 +190,6 @@ void MicrofileEditor::updateInstruction(int i)
 
     m_instGui[i].m_cbCondition->setCurrentIndex(int( ( in & 0x3800 ) >> 11 ));
 
-    m_instGui[i].m_leJump->setText(QString("%1").arg(in & 0x07FF));
     m_updating = false;
 }
 
@@ -197,30 +199,81 @@ void MicrofileEditor::updateControl(int i)
         return;
     MPI in = 0;
 
+    //                        RR RRRR
+    //                        AA AAAA
+    //
     in |= (MPI)m_instGui[i].m_cbRegA->currentIndex();
+    //                       RRR RRR0
+    //                       AAA AAA
+    //
     in <<= 1;
+    //                       RRR RRRM
+    //                       AAA AAAA
+    //
     in |= (MPI)m_instGui[i].m_chbMuxA->isChecked();
 
+    //               R RRRR RM00 0000
+    //               A AAAA AA
+    //
     in <<= 6;
-    in |= (MPI)m_instGui[i].m_cbRegB->currentIndex() << 28;
+    //               R RRRR RMRR RRRR
+    //               A AAAA AABB BBBB
+    //
+    in |= (MPI)m_instGui[i].m_cbRegB->currentIndex();
+    //              RR RRRR MRRR RRR0
+    //              AA AAAA ABBB BBB
+    //
     in <<= 1;
-    in |= (MPI)m_instGui[i].m_chbMuxB->isChecked() << 27;
+    //              RR RRRR MRRR RRRM
+    //              AA AAAA ABBB BBBB
+    //
+    in |= (MPI)m_instGui[i].m_chbMuxB->isChecked();
 
+    //        RRR RRRM RRRR RRM0 0000
+    //        AAA AAAA BBBB BBB0 0000
+    //
     in <<= 6;
-    in |= (MPI)m_instGui[i].m_cbRegC->currentIndex() << 21;
+    //        RRR RRRM RRRR RRMR RRRR
+    //        AAA AAAA BBBB BBBC CCCC
+    //
+    in |= (MPI)m_instGui[i].m_cbRegC->currentIndex();
+    //       RRRR RRMR RRRR RMRR RRR0
+    //       AAAA AAAB BBBB BBCC CCC
+    //
     in <<= 1;
-    in |= (MPI)m_instGui[i].m_chbMuxC->isChecked() << 20;
+    //       RRRR RRMR RRRR RMRR RRRM
+    //       AAAA AAAB BBBB BBCC CCCC
+    //
+    in |= (MPI)m_instGui[i].m_chbMuxC->isChecked();
 
+    //     R RRRR RMRR RRRR MRRR RRM0
+    //     A AAAA AABB BBBB BCCC CCC
+    //
     in <<= 1;
-    in |= (MPI)m_instGui[i].m_chbRD->isChecked() << 19;
+    //     R RRRR RMRR RRRR MRRR RRMR
+    //     A AAAA AABB BBBB BCCC CCCD
+    //
+    in |= (MPI)m_instGui[i].m_chbRD->isChecked();
+    //    RR RRRR MRRR RRRM RRRR RMR0
+    //    AA AAAA ABBB BBBB CCCC CCD
+    //
     in <<= 1;
-    in |= (MPI)m_instGui[i].m_chbWR->isChecked() << 18;
+    //    RR RRRR MRRR RRRM RRRR RMRW
+    //    AA AAAA ABBB BBBB CCCC CCDR
+    //
+    in |= (MPI)m_instGui[i].m_chbWR->isChecked();
 
+    // RR RRRR MRRR RRRM RRRR RMRW 0000
+    // AA AAAA ABBB BBBB CCCC CCDR 0000
+    //
     in <<= 4;
-    in |= (MPI)m_instGui[i].m_cbALU->currentIndex() << 14;
+    // RR RRRR MRRR RRRM RRRR RMRW AAAA
+    // AA AAAA ABBB BBBB CCCC CCDR LLLL
+    //
+    in |= (MPI)m_instGui[i].m_cbALU->currentIndex();
 
     in <<= 3;
-    in |= m_instGui[i].m_cbCondition->currentIndex() << 11;
+    in |= m_instGui[i].m_cbCondition->currentIndex();
 
     in <<= 11;
     in |= m_instGui[i].m_leJump->text().toInt();
@@ -288,23 +341,28 @@ void MicrofileEditor::followToggle()
     ui.m_tbFollow->setChecked(m_follow);
     if(m_follow)
     {
-        m_instGui[8].m_lAddress->setPixmap(QPixmap(":/images/current.png"));
+        m_instGui[7].m_lAddress->setPixmap(QPixmap(":/images/current.png"));
     }
     else
     {
-        m_instGui[8].m_lAddress->setPixmap(QPixmap());
+        m_instGui[7].m_lAddress->setPixmap(QPixmap());
     }
 }
 
 void MicrofileEditor::newMPC(quint16 mpc)
 {
-    m_from = (mpc - 7) % 2048;
+    if(m_follow) {
+        if(mpc < 7) {
+            mpc += 2048;
+        }
+        m_from = (mpc - 7) % 2048;
 
-    for(int i=0;i<16;i++)
-    {
-        updateInstruction(i);
+        for(int i=0;i<16;i++)
+        {
+            updateInstruction(i);
+        }
+        ui.m_sbOffset->setValue(m_from);
     }
-    ui.m_sbOffset->setValue(m_from);
 }
 
 void MicrofileEditor::updateControls()

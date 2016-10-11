@@ -33,7 +33,16 @@
       <enum>QFrame::Raised</enum>
      </property>
      <layout class="QGridLayout" name="gridLayout">
-      <property name="margin">
+      <property name="leftMargin">
+       <number>0</number>
+      </property>
+      <property name="topMargin">
+       <number>0</number>
+      </property>
+      <property name="rightMargin">
+       <number>0</number>
+      </property>
+      <property name="bottomMargin">
        <number>0</number>
       </property>
       <item row="11" column="0">
@@ -79,9 +88,6 @@
       </item>
       <item row="10" column="0">
        <widget class="QToolButton" name="m_tbEdit">
-        <property name="enabled">
-         <bool>false</bool>
-        </property>
         <property name="text">
          <string>...</string>
         </property>

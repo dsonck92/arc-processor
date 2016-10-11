@@ -11,40 +11,33 @@
 #include <QObject>
 #include <QVector>
 
-class ARCMemory : public QObject
+class ARCMemory
 {
-  Q_OBJECT
-
-    quint8 *m_vu32Memory;
     quint32 m_addr;
 
-  public:
-    ARCMemory ( );
-    virtual ~ARCMemory ( );
+private:
+    virtual void writeHelper(quint32 loc, quint8* data, quint8 size) = 0;
+    virtual void readHelper(quint32 loc, quint8* data, quint8 size) const = 0;
 
-  public:
-    void setAddress ( quint32 loc );
+public:
+    ARCMemory() { m_addr = 0; }
+    virtual ~ARCMemory() {}
 
-    quint8 readByte ( ) const;
-    quint16 readWord ( ) const;
-    quint32 readDWord ( ) const;
+public:
+    virtual void setAddress ( quint32 loc );
 
-    quint32 readDWord ( quint32 loc ) const;
+    virtual quint8 readByte ( ) const;
+    virtual quint16 readWord ( ) const;
+    virtual quint32 readDWord ( ) const;
 
-    void writeByte ( quint8 byte );
-    void writeWord ( quint16 word );
-    void writeDWord ( quint32 dword );
+    virtual void writeByte ( quint8 byte );
+    virtual void writeWord ( quint16 word );
+    virtual void writeDWord ( quint32 dword );
 
-  public:
-    quint8 read(quint32 addr) const {return m_vu32Memory[addr];}
-    const quint8 *data() const {return m_vu32Memory;}
-
-  public:
+public:
     bool loadBinFile(QString filename);
     void saveBinFile(QString filename);
 
-  signals:
-    void memoryChange ( quint32 begin , quint32 end );
 };
 
 #endif /* ARCMEMORY_H_ */

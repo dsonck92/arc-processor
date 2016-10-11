@@ -109,7 +109,7 @@ void ARCProcessor::doMicrostep ( )
   qDebug ( ) << this << "B:" << m_asScratchpad->readB ( );
 
   // get the ALU instruction
-  ALU alu = (ALU) ( ( in & 0x0003C000 ) >> 14 );
+  ALU alu = ALU ( ( in & 0x0003C000 ) >> 14 );
 
   qDebug ( ) << this << "ALU:" << QString::number ( alu , 2 );
 
@@ -187,21 +187,54 @@ void ARCProcessor::doMicrostep ( )
       break;
     case DECODE:
       qDebug ( ) << this << "On decode";
+      //    C   1    F   8    0   0    0   0
+      // 11000001 11111000 00000000 00000000
+      // OO     O OOOOO
+      // PP     P PPPPP
+      //        2 22333
       addr = ( m_asScratchpad->readIR ( ) & 0xC1F80000 ) >> 17;
+      //   6   0    F   C
+      // 1100000 11111100
+      // OO      OOOOOO
+      // PP      PPPPPP
+      //         222333
       // Compress the address
       addr |= ( ( addr & 0x6000 ) >> 5 );
+      //   6   3    F   C
+      // 1100011 11111100
+      // OO   OO OOOOOO
+      // PP   PP PPPPPP
+      //         222333
       // Set bit 10
       addr |= ( 0x0400 );
+      //   6   7    F   C
+      // 1100111 11111100
+      // OO   OO OOOOOO
+      // PP   PP PPPPPP
+      //         222333
+
       // Mask out unwanted information
       switch ( addr & 0x0300 )
       {
         case 0x0000:
+          // 111 11100000
+          //  OO OOOOOO
+          //  PP PPPPPP
+          //     222333
           addr &= 0x07E0;
           break;
         case 0x0100:
+          // 111 00000000
+          //  OO OOOOOO
+          //  PP PPPPPP
+          //     222333
           addr &= 0x0700;
           break;
         default:
+          // 111 11111100
+          //  OO OOOOOO
+          //  PP PPPPPP
+          //     222333
           addr &= 0x07FC;
       }
       m_amMicroStore->setMPC ( addr );
@@ -212,7 +245,7 @@ void ARCProcessor::doMicrostep ( )
   }
 }
 
-quint8 ARCProcessor::doALU ( ALU alu )
+quint32 ARCProcessor::doALU ( ALU alu )
 {
   quint64 result;
   bool setCC = false;

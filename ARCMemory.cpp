@@ -13,49 +13,25 @@
 
 #include <qdebug.h>
 
-ARCMemory::ARCMemory ( )
-{
-    // TODO Auto-generated constructor stub
-    //m_vu32Memory = new quint8 [0xFFFFFFFF];
-    //qMemSet(m_vu32Memory,0,0xFFFFFFFF);
-}
-
-ARCMemory::~ARCMemory ( )
-{
-    // TODO Auto-generated destructor stub
-}
-
-void ARCMemory::setAddress(quint32 loc)
-{
-    m_addr = loc;
-}
-
 void ARCMemory::writeByte(quint8 data)
 {
-//    qMemCopy(m_vu32Memory + m_addr,&data,sizeof(data));
-
-//    emit memoryChange(m_addr,m_addr+1);
+    writeHelper(m_addr, &data, sizeof(data));
 }
 
 void ARCMemory::writeWord(quint16 data)
 {
-//    qMemCopy(m_vu32Memory + m_addr,&data,sizeof(data));
-
-//    emit memoryChange(m_addr,m_addr+2);
-
+    writeHelper(m_addr, (quint8*)(&data), sizeof(data));
 }
 
 void ARCMemory::writeDWord(quint32 data)
 {
-//    qMemCopy(m_vu32Memory + m_addr,&data,sizeof(data));
-
-//    emit memoryChange(m_addr,m_addr+4);
+    writeHelper(m_addr, (quint8*)(&data), sizeof(data));
 }
 
 quint8 ARCMemory::readByte() const
 {
     quint8 data;
-//    qMemCopy(&data,m_vu32Memory + m_addr,sizeof(data));
+    readHelper(m_addr, &data, sizeof(data));
 
     return data;
 }
@@ -63,7 +39,7 @@ quint8 ARCMemory::readByte() const
 quint16 ARCMemory::readWord() const
 {
     quint16 data;
-//    qMemCopy(&data,m_vu32Memory + m_addr,sizeof(data));
+    readHelper(m_addr, (quint8*)(&data), sizeof(data));
 
     return data;
 }
@@ -71,22 +47,18 @@ quint16 ARCMemory::readWord() const
 quint32 ARCMemory::readDWord() const
 {
     quint32 data;
-//    qMemCopy(&data,m_vu32Memory + m_addr,sizeof(data));
+    readHelper(m_addr, (quint8*)(&data), sizeof(data));
 
     return data;
 }
 
-quint32 ARCMemory::readDWord(quint32 loc) const
+void ARCMemory::setAddress(quint32 loc)
 {
-    quint32 data;
-//    qMemCopy(&data,m_vu32Memory + loc,sizeof(data));
-
-    return data;
+    m_addr = loc;
 }
 
 bool ARCMemory::loadBinFile(QString filename)
 {
-    return false;
     QFile file(filename);
     file.open(QIODevice::ReadOnly);
     {
@@ -102,9 +74,7 @@ bool ARCMemory::loadBinFile(QString filename)
 
             qDebug() << addr << inst;
 
-            //qMemCopy(m_vu32Memory + addr,&inst,sizeof(inst));
-
-            emit memoryChange(addr,addr+4);
+            writeHelper(addr, (quint8*)(&inst), sizeof(inst));
         }
     }
 
@@ -113,16 +83,16 @@ bool ARCMemory::loadBinFile(QString filename)
 
 void ARCMemory::saveBinFile(QString filename)
 {
-    return;
     QFile file(filename);
     file.open(QIODevice::WriteOnly);
     {
         QTextStream str(&file);
         str << "0\n"; // ORG
-        for(int I=0;I<0xFFFFFFFF;I+=4)
+        for(quint32 I=0;I<0xFFFFFFFF;I+=4)
         {
             quint32 inst;
-            //qMemCopy(&inst,m_vu32Memory + I,sizeof(inst));
+
+            readHelper(I, (quint8*)(&inst), sizeof(inst));
 
             if(inst != 0)
             {
@@ -132,3 +102,4 @@ void ARCMemory::saveBinFile(QString filename)
         }
     }
 }
+
